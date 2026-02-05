@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cooking menu</title>
+</head>
+<body>
+    <style>
+        * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    padding: 40px;
+}
+
+/* Menu Card */
+.menu {
+    display: flex;
+    width: 800px;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+}
+
+/* Image */
+.img {
+    width: 45%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Content */
+.content {
+    padding: 20px 24px;
+    width: 55%;
+    position: relative;
+}
+
+/* Headings */
+h2 {
+    margin: 0 0 6px;
+    color: #333;
+}
+
+h3 {
+    color: #c0392b;
+    margin-bottom: 6px;
+}
+
+/* Paragraph */
+p {
+    margin: 6px 0 14px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Lists */
+ul {
+    margin-top: 4px;
+    margin-bottom: 16px;
+    padding-left: 18px;
+}
+
+li {
+    margin-bottom: 4px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Badge */
+.badge {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    background: #2ecc71;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Veg Badge */
+.badge.veg {
+    background: #e74c3c;
+}
+
+/* Hover Effect */
+.menu:hover {
+    transform: scale(1.02);
+    transition: 0.3s ease;
+}
+
+    </style>
+</body>
+</html>
+<div class="menu">
+    <img class="img" src="./Screenshot 2026-02-04 102843.png">
+
+    <div class="content">
+        <h2>Chocolate Cake</h2>
+        <p>🍫 Vegetarian</p>
+
+        <h3>Ingredients</h3>
+        <ul>
+            <li>Flour</li>
+            <li>Cocoa powder</li>
+            <li>Sugar</li>
+            <li>Butter</li>
+        </ul>
+
+        <h3>Instructions</h3>
+        <ul>
+            <li>Mix dry ingredients</li>
+            <li>Add butter & milk</li>
+            <li>Bake until done</li>
+        </ul>
+
+        <p class="badge" style="background:#e74c3c;">VEG</p>
+    </div>
+</div>
+<div class="menu">
+    <img class="img" src="./Screenshot 2026-02-04 102602.png">
+
+    <div class="content">
+        <h2>Chicken Shawarma</h2>
+        <p>🔥 Non Vegetarian</p>
+
+        <h3>Ingredients</h3>
+        <ul>
+            <li>Chicken</li>
+            <li>Pita bread</li>
+            <li>Garlic sauce</li>
+            <li>Spices</li>
+        </ul>
+
+        <h3>Instructions</h3>
+        <ul>
+            <li>Marinate chicken</li>
+            <li>Grill the chicken</li>
+            <li>Wrap & serve</li>
+        </ul>
+
+        <p class="badge">NON VEG</p>
+    </div>
+</div>
