@@ -3,112 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cooking menu</title>
-</head>
-<body>
+    <title>Cooking Menu</title>
     <style>
         * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    background: #f5f5f5;
-    padding: 40px;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdfbf7 0%, #f7ede2 50%, #f3e2d5 100%);
+            min-height: 100vh;
+            padding: 60px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* Menu Card */
-.menu {
-    display: flex;
-    width: 800px;
-    background: #ffffff;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    margin-bottom: 30px;
-}
+        /* ---------- Page Header ---------- */
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeDown 0.8s ease both;
+        }
 
-/* Image */
-.img {
-    width: 45%;
-    height: auto;
-    object-fit: cover;
-}
+        .page-header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, #c0392b, #e67e22);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-/* Content */
-.content {
-    padding: 20px 24px;
-    width: 55%;
-    position: relative;
-}
+        .page-header p {
+            margin-top: 8px;
+            color: #8a7a6d;
+            font-size: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-/* Headings */
-h2 {
-    margin: 0 0 6px;
-    color: #333;
-}
+        /* ---------- Menu Card ---------- */
+        .menu {
+            display: flex;
+            width: 100%;
+            max-width: 860px;
+            background: #ffffff;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(160, 100, 50, 0.15);
+            margin-bottom: 40px;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            animation: fadeUp 0.8s ease both;
+        }
 
-h3 {
-    color: #c0392b;
-    margin-bottom: 6px;
-}
+        .menu:nth-of-type(2) {
+            animation-delay: 0.15s;
+        }
 
-/* Paragraph */
-p {
-    margin: 6px 0 14px;
-    color: #666;
-    font-size: 14px;
-}
+        /* ---------- Image ---------- */
+        .img-wrap {
+            width: 45%;
+            position: relative;
+            overflow: hidden;
+            min-height: 260px;
+        }
 
-/* Lists */
-ul {
-    margin-top: 4px;
-    margin-bottom: 16px;
-    padding-left: 18px;
-}
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
 
-li {
-    margin-bottom: 4px;
-    font-size: 14px;
-    color: #444;
-}
+        /* Dark gradient overlay on image */
+        .img-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
+        }
 
-/* Badge */
-.badge {
-    position: absolute;
-    bottom: 18px;
-    right: 18px;
-    background: #2ecc71;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
+        /* Diet badge on image corner */
+        .diet {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            backdrop-filter: blur(4px);
+        }
 
-/* Veg Badge */
-.badge.veg {
-    background: #e74c3c;
-}
+        .diet.veg {
+            background: rgba(39, 174, 96, 0.9);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+        }
 
-/* Hover Effect */
-.menu:hover {
-    transform: scale(1.02);
-    transition: 0.3s ease;
-}
+        .diet.nonveg {
+            background: rgba(231, 76, 60, 0.9);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+        }
 
+        /* ---------- Content ---------- */
+        .content {
+            padding: 28px 30px 26px;
+            width: 55%;
+            position: relative;
+        }
+
+        .content h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #2d2a26;
+            margin-bottom: 4px;
+        }
+
+        .tagline {
+            color: #b0917a;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        /* Meta chips row */
+        .meta {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .meta span {
+            font-size: 12px;
+            font-weight: 600;
+            color: #a0622d;
+            background: #fdf0e3;
+            border: 1px solid #f3dcc4;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .content h3 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #c0392b;
+            margin: 14px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content h3::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, #f0ddd0, transparent);
+        }
+
+        /* Ingredients as chips */
+        .ingredients {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            list-style: none;
+            margin-bottom: 6px;
+        }
+
+        .ingredients li {
+            font-size: 12.5px;
+            color: #6b5b4c;
+            background: #faf6f1;
+            border: 1px solid #eee3d6;
+            padding: 6px 13px;
+            border-radius: 16px;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .ingredients li:hover {
+            background: #fdf0e3;
+            transform: translateY(-2px);
+        }
+
+        /* Instructions as numbered steps */
+        .steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            font-size: 13.5px;
+            color: #555;
+            padding: 5px 0 5px 34px;
+            margin-bottom: 2px;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e67e22, #c0392b);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Rating */
+        .rating {
+            position: absolute;
+            bottom: 22px;
+            right: 26px;
+            font-size: 14px;
+            color: #f39c12;
+            letter-spacing: 2px;
+        }
+
+        .rating small {
+            color: #b3a295;
+            letter-spacing: 0;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+
+        /* ---------- Hover ---------- */
+        .menu:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 45px rgba(160, 100, 50, 0.25);
+        }
+
+        .menu:hover .img {
+            transform: scale(1.08);
+        }
+
+        /* ---------- Animations ---------- */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- Mobile ---------- */
+        @media (max-width: 640px) {
+            body { padding: 40px 16px; }
+
+            .page-header h1 { font-size: 30px; }
+
+            .menu { flex-direction: column; }
+
+            .img-wrap {
+                width: 100%;
+                height: 210px;
+                min-height: 0;
+            }
+
+            .content { width: 100%; }
+
+            .rating { position: static; margin-top: 14px; }
+
+            .menu:hover { transform: none; }
+        }
     </style>
-</body>
-</html>
+</head>
+<body>
+
+<header class="page-header">
+    <h1>🍽️ Today's Specials</h1>
+    <p>Fresh from our kitchen</p>
+</header>
+
+<!-- Card 1 -->
 <div class="menu">
-    <img class="img" src="./Screenshot 2026-02-04 102843.png">
+    <div class="img-wrap">
+        <img class="img" src="./Screenshot 2026-02-04 102843.png" alt="Chocolate Cake">
+        <span class="diet veg">🌱 VEG</span>
+    </div>
 
     <div class="content">
         <h2>Chocolate Cake</h2>
-        <p>🍫 Vegetarian</p>
+        <p class="tagline">Rich, moist &amp; utterly decadent</p>
+
+        <div class="meta">
+            <span>⏱ 45 min</span>
+            <span>👥 Serves 8</span>
+            <span>🍰 Dessert</span>
+        </div>
 
         <h3>Ingredients</h3>
-        <ul>
+        <ul class="ingredients">
             <li>Flour</li>
             <li>Cocoa powder</li>
             <li>Sugar</li>
@@ -116,24 +319,35 @@ li {
         </ul>
 
         <h3>Instructions</h3>
-        <ul>
+        <ol class="steps">
             <li>Mix dry ingredients</li>
-            <li>Add butter & milk</li>
+            <li>Add butter &amp; milk</li>
             <li>Bake until done</li>
-        </ul>
+        </ol>
 
-        <p class="badge" style="background:#e74c3c;">VEG</p>
+        <div class="rating">★★★★★ <small>4.9</small></div>
     </div>
 </div>
+
+<!-- Card 2 -->
 <div class="menu">
-    <img class="img" src="./Screenshot 2026-02-04 102602.png">
+    <div class="img-wrap">
+        <img class="img" src="./Screenshot 2026-02-04 102602.png" alt="Chicken Shawarma">
+        <span class="diet nonveg">🍗 NON VEG</span>
+    </div>
 
     <div class="content">
         <h2>Chicken Shawarma</h2>
-        <p>🔥 Non Vegetarian</p>
+        <p class="tagline">Smoky, spicy &amp; wrapped to perfection</p>
+
+        <div class="meta">
+            <span>⏱ 30 min</span>
+            <span>👥 Serves 4</span>
+            <span>🌯 Main Course</span>
+        </div>
 
         <h3>Ingredients</h3>
-        <ul>
+        <ul class="ingredients">
             <li>Chicken</li>
             <li>Pita bread</li>
             <li>Garlic sauce</li>
@@ -141,12 +355,16 @@ li {
         </ul>
 
         <h3>Instructions</h3>
-        <ul>
+        <ol class="steps">
             <li>Marinate chicken</li>
             <li>Grill the chicken</li>
-            <li>Wrap & serve</li>
-        </ul>
+            <li>Wrap &amp; serve</li>
+        </ol>
 
-        <p class="badge">NON VEG</p>
+        <div class="rating">★★★★☆ <small>4.7</small></div>
     </div>
 </div>
+
+</body>
+</html>
+
